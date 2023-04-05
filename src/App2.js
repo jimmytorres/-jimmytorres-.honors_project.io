@@ -3,7 +3,7 @@ import GoogleMap from "google-maps-react-markers";
 import Marker from "./marker";
 import mapOptions from "./map-options.json";
 
-  const App = (() => {
+  const App2 = (() => {
     //state 
     const [reports, setReports] = useState([]);
 
@@ -102,6 +102,6 @@ import mapOptions from "./map-options.json";
 
   });
 
-  export default App;
+  export default App2;
 
 
