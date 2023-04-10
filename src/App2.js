@@ -15,7 +15,7 @@ import mapOptions from "./map-options.json";
 
       //API link that fetches disaster name, description, and status
       //Has filters that only diplay the 3 most recent disasters that include earthquakes, tsunamis, and flashfloods
-       fetch('https://api.reliefweb.int/v1/disasters?appname=apidoc&preset=latest&limit=10&filter[field]=name&filter[value][]=earthquake&filter[value][]=tsunami&filter[value][]=flashflood&fields[include][]=url&fields[include][]=description&fields[include][]=status&fields[include][]=country.name&fields[include][]=primary_country.name')
+       fetch('https://api.reliefweb.int/v1/disasters?appname=apidoc&preset=latest&limit=20&filter[field]=name&filter[value][]=earthquake&filter[value][]=tsunami&filter[value][]=flashflood&filter[value][]=flood&filter[value][]=landslide&filter[value][]=mudslide&filter[value][]=wildfire&filter[value][]=volcano&filter[value][]=severelocalstorm&filter[value][]=drought&filter[value][]=coldwave&filter[value][]=heatwave&fields[include][]=url&fields[include][]=description&fields[include][]=status&fields[include][]=country.name&fields[include][]=primary_country.name')
        .then(result => result.json())
        
        .then((data) => {
