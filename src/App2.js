@@ -2,10 +2,12 @@ import { useState, useEffect } from "react";
 import GoogleMap from "google-maps-react-markers";
 import Marker from "./marker";
 import mapOptions from "./map-options.json";
+import './style.css';
 
   const App2 = (() => {
     //state 
     const [reports, setReports] = useState([]);
+    const [highlighted, setHighlighted] = useState(null);
 
     //Will be used for the pop-up effect
     //const [highlighted, setHighlighted] = useState(null);
@@ -56,6 +58,14 @@ import mapOptions from "./map-options.json";
      fetchReprots()
     }, [])
 
+    const onMarkerClick = (e, {markerId, lat, lng}) => {
+      setHighlighted(markerId);
+    }
+
+    const onMapChange = () => {
+      setHighlighted(null);
+    }
+
     return(
       <div>
 
@@ -80,6 +90,18 @@ import mapOptions from "./map-options.json";
               ))}
 
             </GoogleMap>
+
+            {highlighted && (
+              <div className="highlighted">
+                {highlighted}{' '}
+                <button type="button" onClick={() => setHighlighted(null)}>
+                  X
+                </button>
+
+              </div>
+            )}
+
+
           </div>
 
           {/* This creates a list of recent disasters below the google map */}
