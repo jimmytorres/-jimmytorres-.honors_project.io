@@ -9,9 +9,6 @@ import './style.css';
     const [reports, setReports] = useState([]);
     const [highlighted, setHighlighted] = useState(null);
 
-    //Will be used for the pop-up effect
-    //const [highlighted, setHighlighted] = useState(null);
-
     //fetch reports 
     const fetchReprots = () => {
 
@@ -58,6 +55,7 @@ import './style.css';
      fetchReprots()
     }, [])
 
+    // Will activate my pop-up when I click on a marker
     const onMarkerClick = (e, {markerId, lat, lng}) => {
       setHighlighted(markerId);
     }
@@ -84,6 +82,7 @@ import './style.css';
                 lat={latitude}
                 lng={longitude}
                 markerId={fields.name}
+                onClick={onMarkerClick}
                 className="marker"
                 />
 
@@ -93,7 +92,17 @@ import './style.css';
 
             {highlighted && (
               <div className="highlighted">
-                {highlighted}{' '}
+
+                {/* ALlows me to access disaster information so I can display it on the pop-up */}
+                {reports
+                .filter(({fields}) => fields.name == highlighted)
+                .map(({fields, url}, index) => (
+                  <div key={index}>
+                    <a href={fields.url}>Read More</a>
+                  </div>
+                ))}
+
+                {/* Creates exit button for pop-up */}
                 <button type="button" onClick={() => setHighlighted(null)}>
                   X
                 </button>
