@@ -70,8 +70,8 @@ import './style.css';
           {/* This holds the google map */}
           <div className="map-container">
             <GoogleMap
-            defaultCenter={{ lat: 45.4046987, lng: 12.2472504 }}
-            defaultZoom={5}
+            defaultCenter={{ lat: 0, lng: 0 }}
+            defaultZoom={1}
             options={mapOptions}
             mapMinHeight="600px"
             >

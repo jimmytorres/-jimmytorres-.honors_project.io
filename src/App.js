@@ -2,13 +2,12 @@ import { useState, useEffect } from "react";
 import GoogleMap from "google-maps-react-markers";
 import Marker from "./marker";
 import mapOptions from "./map-options.json";
+import './style.css';
 
   const App = (() => {
     //state 
     const [reports, setReports] = useState([]);
-
-    //Will be used for the pop-up effect
-    //const [highlighted, setHighlighted] = useState(null);
+    const [highlighted, setHighlighted] = useState(null);
 
     //fetch reports 
     const fetchReprots = () => {
@@ -56,14 +55,23 @@ import mapOptions from "./map-options.json";
      fetchReprots()
     }, [])
 
+    // Will activate my pop-up when I click on a marker
+    const onMarkerClick = (e, {markerId, lat, lng}) => {
+      setHighlighted(markerId);
+    }
+
+    const onMapChange = () => {
+      setHighlighted(null);
+    }
+
     return(
       <div>
 
           {/* This holds the google map */}
           <div className="map-container">
             <GoogleMap
-            defaultCenter={{ lat: 45.4046987, lng: 12.2472504 }}
-            defaultZoom={5}
+            defaultCenter={{ lat: 0, lng: 0 }}
+            defaultZoom={1}
             options={mapOptions}
             mapMinHeight="600px"
             >
@@ -74,12 +82,35 @@ import mapOptions from "./map-options.json";
                 lat={latitude}
                 lng={longitude}
                 markerId={fields.name}
+                onClick={() => window.open(fields.url, '_blank')}                
                 className="marker"
                 />
 
               ))}
 
             </GoogleMap>
+
+            {highlighted && (
+              <div className="highlighted">
+
+                {/* ALlows me to access disaster information so I can display it on the pop-up */}
+                {reports
+                .filter(({fields}) => fields.name == highlighted)
+                .map(({fields, url}, index) => (
+                  <div key={index}>
+                    <a href={fields.url}>Read More</a>
+                  </div>
+                ))}
+
+                {/* Creates exit button for pop-up */}
+                <button type="button" onClick={() => setHighlighted(null)}>
+                  X
+                </button>
+
+              </div>
+            )}
+
+
           </div>
 
           {/* This creates a list of recent disasters below the google map */}
