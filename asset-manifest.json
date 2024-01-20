@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/jimmytorres/-jimmytorres-.honors_project.io.git/static/css/main.b50c831f.css",
+    "main.js": "/jimmytorres/-jimmytorres-.honors_project.io.git/static/js/main.3155c1c0.js",
+    "static/js/787.8c3471f1.chunk.js": "/jimmytorres/-jimmytorres-.honors_project.io.git/static/js/787.8c3471f1.chunk.js",
+    "index.html": "/jimmytorres/-jimmytorres-.honors_project.io.git/index.html",
+    "main.b50c831f.css.map": "/jimmytorres/-jimmytorres-.honors_project.io.git/static/css/main.b50c831f.css.map",
+    "main.3155c1c0.js.map": "/jimmytorres/-jimmytorres-.honors_project.io.git/static/js/main.3155c1c0.js.map",
+    "787.8c3471f1.chunk.js.map": "/jimmytorres/-jimmytorres-.honors_project.io.git/static/js/787.8c3471f1.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b50c831f.css",
+    "static/js/main.3155c1c0.js"
+  ]
+}
